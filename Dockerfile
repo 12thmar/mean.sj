@@ -38,7 +38,7 @@ ENV NODE_ENV development
 EXPOSE 3000 35729
 
 
-RUN chmod +x 777 /home/meanuser/bin/*.sh
+RUN chmod +x /home/meanuser/bin/*.sh
 
 CMD ["/home/meanuser/bin/entry_point.sh"]
 
