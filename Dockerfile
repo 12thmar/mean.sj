@@ -42,4 +42,4 @@ RUN chmod +x 777 /home/meanuser/bin/*.sh
 
 CMD ["/home/meanuser/bin/entry_point.sh"]
 
-Use meanuser
+USER meanuser
