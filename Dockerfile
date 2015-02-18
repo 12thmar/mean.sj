@@ -4,11 +4,6 @@ MAINTAINER Seid Adem, seid.adem@gmail.com
 
 WORKDIR /home/mean.js
 
-RUN apt-get update -qqy \
-    git \
-    curl \
-  && rm -rf /var/lib/apt/lists/*
-  
 # Install Mean.JS Prerequisites
 RUN npm install -g grunt-cli
 RUN npm install -g bower
