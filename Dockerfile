@@ -3,7 +3,7 @@ FROM dockerfile/nodejs
 MAINTAINER Seid Adem, seid.adem@gmail.com
 
 
-========================================
+#========================================
 # Add normal user with passwordless sudo
 #========================================
 RUN sudo useradd meanuser --shell /bin/bash --create-home \
@@ -41,3 +41,5 @@ EXPOSE 3000 35729
 RUN chmod +x 777 /home/meanuser/bin/*.sh
 
 CMD ["/home/meanuser/bin/entry_point.sh"]
+
+USER meanuser 
