@@ -2,23 +2,32 @@ FROM dockerfile/nodejs
 
 MAINTAINER Seid Adem, seid.adem@gmail.com
 
-WORKDIR /home/mean.js
+
+========================================
+# Add normal user with passwordless sudo
+#========================================
+RUN sudo useradd meanuser --shell /bin/bash --create-home \
+  && sudo usermod -a -G sudo meanuser \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+  && echo 'meanuser:secret' | chpasswd
+
+WORKDIR /home/meanuser
 
 # Install Mean.JS Prerequisites
 RUN npm install -g grunt-cli
 RUN npm install -g bower
 
 # Install Mean.JS packages
-ADD package.json /home/mean.js/package.json
+ADD package.json /home/meanuser/package.json
 RUN npm install
 
 # Manually trigger bower. Why doesnt this work via npm install?
-ADD .bowerrc /home/mean.js/.bowerrc
-ADD bower.json /home/mean.js/bower.json
+ADD .bowerrc /home/meanuser/.bowerrc
+ADD bower.json /home/meanuser/bower.json
 RUN bower install --config.interactive=false --allow-root
 
 # Make everything available for start
-ADD . /home/mean.js
+ADD . /home/meanuser
 
 # currently only works for development
 ENV NODE_ENV development
@@ -28,5 +37,9 @@ ENV NODE_ENV development
 # Port 35729 for livereload
 EXPOSE 3000 35729
 
-chmod +x /home/mean.js/bin/*.sh
-CMD ["/home/mean.js/bin/entry_point.sh"]
+
+RUN chmod +x 777 /home/meanuser/bin/*.sh
+
+CMD ["/home/meanuser/bin/entry_point.sh"]
+
+Use meanuser
