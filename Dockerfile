@@ -5,7 +5,6 @@ MAINTAINER Seid Adem, seid.adem@gmail.com
 WORKDIR /home/mean.js
 
 # Install Mean.JS Prerequisites
-RUN npm install -g grunt-cli
 RUN npm install -g bower
 
 # Install Mean.JS packages
