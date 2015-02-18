@@ -27,4 +27,6 @@ ENV NODE_ENV development
 # Port 3000 for server
 # Port 35729 for livereload
 EXPOSE 3000 35729
-CMD ["/home/mean.js/entry_point.sh"]
+
+chmod +x /home/mean.js/bin/*.sh
+CMD ["/home/mean.js/bin/entry_point.sh"]
