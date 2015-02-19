@@ -41,5 +41,3 @@ EXPOSE 3000 35729
 RUN chmod +x /home/meanuser/bin/*.sh
 
 CMD ["/home/meanuser/bin/entry_point.sh"]
-
-USER meanuser 
