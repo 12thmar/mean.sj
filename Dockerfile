@@ -34,8 +34,7 @@ ENV NODE_ENV development
 
 
 # Port 3000 for server
-# Port 35729 for livereload
-EXPOSE 3000 35729  27017
+EXPOSE 3030
 
 RUN chmod +x /home/meanuser/bin/*.sh
 
